@@ -46,14 +46,6 @@
 					</form>
 				</div>
 				<div id="sidebar-content">
-					<div id="menu">
-						<ul>
-							<li><a id="home" href="/home.html">Home</a></li>
-							<li><a id="unread" href="/unread.html">Unread <span class="badge">7</span></a></li>
-							<li><a id="liked" href="/liked.html">Liked</a></li>
-							<li><a id="all" href="/all.html">All articles</a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div id="content">

@@ -235,20 +235,20 @@ function loadSidebar()
 					(
 						$("<li>").append
 						(
-							$("<a>").attr({ "id": "home", "href": "javascript:;" }).text("Home")
+							$("<a>").attr({ "id": "home", "feed": "home", "href": "javascript:;" }).text("Home")
 						),
 						$("<li>").append
 						(
-							$("<a>").attr({ "id": "unread", "href": "javascript:;" }).text("Unread"),
+							$("<a>").attr({ "id": "unread", "feed": "unread", "href": "javascript:;" }).text("Unread"),
 							$("<span>").addClass("badge").text(data != "0" ? " " + data : "")
 						),
 						$("<li>").append
 						(
-							$("<a>").attr({ "id": "liked", "href": "javascript:;" }).text("Liked")
+							$("<a>").attr({ "id": "liked", "feed": "liked", "href": "javascript:;" }).text("Liked")
 						),
 						$("<li>").append
 						(
-							$("<a>").attr({ "id": "all", "href": "javascript:;" }).text("All articles")
+							$("<a>").attr({ "id": "all", "feed": "all", "href": "javascript:;" }).text("All articles")
 						)
 					)
 				),
@@ -281,7 +281,7 @@ function loadSidebar()
 				});
 			});
 
-			$("#subscriptions li a").click(function()
+			$("#subscriptions li a, #menu li a").click(function()
 			{
 				var link = $(this);
 
@@ -336,7 +336,7 @@ function loadFeed()
 				{
 					$("#reader").append
 					(
-						$("<article>").attr("id", article.id).addClass("unread").append
+						$("<article>").attr("id", article.id).addClass(article.status[0]).addClass(article.status[1]).append
 						(
 							$("<div>").addClass("date").text(article.date),
 							$("<h2>").append
@@ -346,11 +346,11 @@ function loadFeed()
 							$("<div>").addClass("content").html("<p>" + article.content + "</p>"),
 							$("<div>").addClass("action-bar").append
 							(
-								$("<span>").text("Like").click(function()
+								$("<span>").text(article.status[0] == "liked" ? "Unlike" : "Like").click(function()
 								{
 									like($(this));
 								}),
-								$("<span>").text("Mark as read").click(function()
+								$("<span>").text(article.status[1] == "unread" ? "Mark as read" : "Mark as unread").click(function()
 								{
 									mark_read($(this));
 								})
