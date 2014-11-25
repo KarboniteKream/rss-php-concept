@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>kream</title>
+		<meta charset="UTF-8" />
+		<link href="/resources/kream.png" rel="icon" type="image/png" />
+		<link href="/style.css" rel="stylesheet" type="text/css" />
+		<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="/jquery.sortable.min.js" type="text/javascript"></script>
+		<script src="/script.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="/">kream.io</a><span class="version"> rss</span></h1>
+			<nav>
+				<ul>
+					<li><a href="/home.html" class="active">Home</a></li>
+					<li><a href="/settings.html">Settings</a></li>
+					<li><a href="/help.html">Help</a></li>
+					<li><a href="/">Sign out</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="main">
+			<div id="sidebar">
+				<span id="new-subscription" class="button-primary block">New subscription</span>
+				<div id="add-subscription">
+					<form action="javascript:;" method="post">
+						<fieldset>
+							<button type="submit" tabindex="2">Add</button>
+							<input type="url" placeholder="subscription URL" tabindex="1"/>
+						</fieldset>
+					</form>
+				</div>
+				<div id="sidebar-content">
+					<div id="menu">
+						<ul>
+							<li><a id="home" href="/home.html">Home</a></li>
+							<li><a id="unread" href="/unread.html" class="active">Unread <span class="badge">7</span></a></li>
+							<li><a id="liked" href="/liked.html">Liked</a></li>
+							<li><a id="all" href="/all.html">All articles</a></li>
+						</ul>
+					</div>
+					<div id="subscriptions">
+						<ul class="connected sortable">
+							<li><a id="neovim" href="/subscriptions/neovim.html">Neovim <span class="badge">1</span></a></li>
+							<li><a id="weechat" href="/subscriptions/weechat.html">WeeChat</a></li>
+							<li><a id="xkcd" href="/subscriptions/xkcd.html">XKCD</a></li>
+						</ul>
+						<ul>
+							<li class="folder">
+								<input type="checkbox" id="games" />
+								<label for="games">Games</label>
+								<ul class="connected sortable">
+									<li><a id="grimrock" href="/subscriptions/grimrock.html">Legend of Grimrock</a></li>
+									<li class="empty-li"></li>
+								</ul>
+							</li>
+							<li class="folder">
+								<input type="checkbox" id="linux" />
+								<label for="linux">Linux</label>
+								<ul class="connected sortable">
+									<li><a id="arch" href="/subscriptions/arch.html">Arch Linux <span class="badge">2</span></a></li>
+									<li><a id="lwn" href="/subscriptions/lwn.html">LWN.net <span class="badge">4</span></a></li>
+									<li class="empty-li"></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div class="header">
+					<span class="button-primary">Refresh</span>
+					<span class="button-secondary">Settings</span>
+					<h2>Unread</h2>
+				</div>
+				<div id="reader">
+					<article class="unread">
+						<div class="date">2014-10-28</div>
+						<h2><a href="http://lwn.net/Articles/618331/rss">Release for CentOS-6.6 i386 and x86_64</a></h2>
+						<div class="author">by <b>ris</b> (LWN.net)</div>
+						<div class="content">
+							<p>CentOS 6.6 has been released.  "There are many fundamental changes in this release, compared with the past CentOS-6 releases, and we highly recommend everyone study the upstream Release Notes as well as the upstream Technical Notes about the changes and how they might impact your installation. (See the 'Further Reading' section of the [<a href="http://wiki.centos.org/Manuals/ReleaseNotes/CentOS6.6">CentOS release notes</a>])."</p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-10-28</div>
+						<h2><a href="http://lwn.net/Articles/618309/rss">Tuesday's security updates</a></h2>
+						<div class="author">by <b>ris</b> (LWN.net)</div>
+						<div class="content">
+							<p><b>Debian</b> has updated <a href="http://lwn.net/Articles/618284/">torque</a> (denial of service).</p>
+							<p><b>Fedora</b> has updated <a href="http://lwn.net/Articles/618285/">devscripts</a> (F20: directory traversal), <b>drupal7</b> (<a href="http://lwn.net/Articles/618287/">F20</a>; <a href="http://lwn.net/Articles/618286/">F19</a>: SQL injection), <a href="http://lwn.net/Articles/618288/">kernel</a> (F20: multiple vulnerabilities), <a href="http://lwn.net/Articles/618289/">kernel</a> (F20: more KVM vulnerabilities), <a href="http://lwn.net/Articles/618290/">php</a> (F19: three vulnerabilities), <a href="http://lwn.net/Articles/618291/">php-ZendFramework2</a> (F20: multiple vulnerabilities), <a href="http://lwn.net/Articles/618292/">phpMyAdmin</a> (F20: cross-site scripting), <a href="http://lwn.net/Articles/618293/">python</a> (F19: buffer overflow), <b>python-oauth2</b> (<a href="http://lwn.net/Articles/618295/">F20</a>; <a href="http://lwn.net/Articles/618294/">F19</a>: two vulnerabilities), <b>rubygem-httpclient</b> (<a href="http://lwn.net/Articles/618297/">F20</a>; <a href="http://lwn.net/Articles/618296/">F19</a>: allows ssl negotiation), and <a href="http://lwn.net/Articles/618298/">sddm</a> (F20: multiple vulnerabilities).</p>
+							<p><b>Mageia</b> has updated <a href="http://lwn.net/Articles/618299/">chromium-browser-stable</a> (multiple vulnerabilities), <a href="http://lwn.net/Articles/618300/">nginx</a> (virtual host confusion attacks), <a href="http://lwn.net/Articles/618301/">php</a> (three vulnerabilities), <a href="http://lwn.net/Articles/618302/">qemu</a> (MG4: multiple vulnerabilities), <a href="http://lwn.net/Articles/618303/">wget</a> (symlink attack), and <a href="http://lwn.net/Articles/618304/">wpa_supplicant, hostapd</a> (command execution).</p>
+							<p><b>Mandriva</b> has updated <a href="http://lwn.net/Articles/618305/">mariadb</a> (multiple vulnerabilities).</p>
+							<p><b>openSUSE</b> has updated <a href="http://lwn.net/Articles/618306/">flash-player</a> (multiple vulnerabilities) and <a href="http://lwn.net/Articles/618307/">perl-Email-Address</a> (denial of service).</p>
+							<p><b>Ubuntu</b> has updated <a href="http://lwn.net/Articles/618308/">pidgin</a> (14.10, 14.04, 12.04: multiple vulnerabilities).</p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-10-28</div>
+						<h2><a href="http://lwn.net/Articles/618271/rss">First Jessie based Debian Edu alpha released</a></h2>
+						<div class="author">by <b>Jonathan Corbet</b> (LWN.net)</div>
+						<div class="content">
+							<p>The first alpha release of Debian Edu (also known as Skolelinux) is available for testing.  "Would you like to give your school's computer a longer life? Are you tired of sneaker administration, running from computer to computer reinstalling the operating system? Would you like to administrate all the computers in your school using only a couple of hours every week? Check out Debian Edu Jessie!"</p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-10-28</div>
+						<h2><a href="http://lwn.net/Articles/618270/rss">The Canonical Distribution of Ubuntu OpenStack</a></h2>
+						<div class="author">by <b>Jonathan Corbet</b> (LWN.net)</div>
+						<div class="content">
+							<p>Canonical has <a href="https://insights.ubuntu.com/2014/10/28/introducing-the-canonical-distribution-of-ubuntu-openstack-your-autopilot-for-rapid-customised-openstack-private-cloud-deployment-and-management/">announced</a> a new OpenStack-oriented distribution.  "Based on Canonical’s industry-leading OpenStack reference architecture and building on Ubuntu’s leading position as the most widely used OpenStack platform, the Canonical Distribution gives users the widest range of commercially-supported vendor options for storage, software-defined networking and hypervisor from Canonical and its OpenStack partners. It then automates the creation and management of a reference OpenStack based on those choices."</p>
+							<p>Note that some conditions apply: "The Canonical Distribution of Ubuntu OpenStack is now available as a public beta, free for up to 10 physical and 10 virtual machines."  See <a href="http://www.ubuntu.com/cloud/openstack">this page</a> for more information.</p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-10-22</div>
+						<h2><a href="https://www.archlinux.org/news/changes-to-intel-microcodeupdates/">Changes to Intel microcode updates</a></h2>
+						<div class="author">by <b>Thomas Bächler</b> (Arch Linux)</div>
+						<div class="content">
+							<p>Microcode on Intel CPUs is no longer loaded automatically, as it needs to be loaded very early in the boot process. This requires adjustments in the bootloader. If you have an Intel CPU, please follow <a href="https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_Microcode_Updates">the instructions in the wiki</a>.</p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-09-06</div>
+						<h2><a href="http://neovim.org/news/2014/sept/">Issue #3 - Better Late than Never</a></h2>
+						<div class="author">by <b>Thiago de Arruda</b> (Neovim)</div>
+						<div class="content">
+							<p>Welcome to the third (and delayed) newsletter for Neovim, the project that aims to overhaul the Vim codebase.</p>
+							<p>The next newsletter will be coming out near the beginning of November. It has changed to be <a href="https://twitter.com/Neovim/status/504448350221901824">every other month</a> as to not overload any sensitive Neovim lovers with too much staggering awe.</p>
+							<h2>General News</h2>
+							<h3>Over 1,000 Issues</h3>
+							<p>The Issue tracker on GitHub now has over 1,000 issues/pull requests. The lucky <a href="https://github.com/neovim/neovim/pull/1000">1000th pull request</a> was opened shortly before August.</p>
+							<h3>Documentation Update</h3>
+							<p>As mentioned in last July’s newsletter, the documentation has successfully been moved to <a href="http://neovim.org/doc/">neovim.org/doc/</a>.</p>
+							<p>It features some general documenation links as well as some more specific reports directed towards developers and contributors. These reports have already <a href="https://github.com/neovim/neovim/pull/985">helped developers</a> contribute and improve the codebase.</p>
+							<h2>Development News</h2>
+							<p>In no particular order, here are the top stories in the last two months.</p>
+							<h3>Implementing <code>system()</code> with Pipes</h3>
+							<p>This issue was mentioned in the <a href="http://neovim.org/news/2014/june/">June newsletter</a> on things that were yet to come.</p>
+							<p><a href="https://github.com/aktau">@aktau</a> has <a href="https://github.com/neovim/neovim/pull/978">finished implementing</a> the VimL <code>system()</code> function to use pipes and the job system instead of redirecting to temporary files. The change provides a nice speed boost and avoids some permission issues (mainly affecting Windows, which is not supported yet).</p>
+							<p>The slowness of the old implementation of <code>system()</code> was especially noticeable when the called process had large output. An example of this is: <code>system('cat largefile')</code>.</p>
+							<h4>Note</h4>
+							<blockquote>
+								<p>There has been one bug report concerning the new <code>system()</code> code: it doesn’t work well with the <a href="https://github.com/garybernhardt/selecta">Selecta</a> plugin as described <a href="https://github.com/neovim/neovim/issues/1044">here</a>.</p>
+							</blockquote>
+							<h3>More Precise Profiling</h3>
+							  <p><a href="https://github.com/aktau">@aktau</a> leveraged <a href="https://github.com/joyent/libuv">libuv’s</a> ability to provide a high resolution
+							  clock on many systems to improve Neovim’s profiling capability with <a href="https://github.com/neovim/neovim/pull/839">this pull
+							  request</a>.</p>
+
+							  <p>The previous implementation was using <code>gettimeofday()</code>. This was a blocker in
+							  getting Neovim to run on Windows (as detailed in the previous section) as this
+							  function wasn’t supported in Windows.</p>
+
+							  <p>For more info on profiling in Vim, just run <code>:help profiling</code>.</p>
+
+							  <h3>Dropping of MoonScript</h3>
+
+							  <p>During the start of of the project, the <a href="https://github.com/neovim/neovim/issues/207">MoonScript vs Lua
+							  debate</a> was a widely discussed one.</p>
+
+							  <p><a href="http://moonscript.org/">MoonScript</a> (a language that compiles to Lua) was chosen to be
+							  the language for unit tests. After updating the unit test library,
+							  <a href="http://olivinelabs.com/busted/">Busted</a>, some unit tests <a href="https://github.com/neovim/neovim/pull/1098#issuecomment-53942512">were failing</a>.</p>
+
+							  <p>Thus it was <a href="https://github.com/neovim/neovim/pull/1098">decided</a> to drop the dependency to simplify
+							  the tests and remove a layer of abstraction. <a href="https://github.com/tarruda">@tarruda</a> made the <a href="https://github.com/neovim/neovim/pull/1128">accompanying
+							  changes and pull request</a>.</p>
+
+							  <h3>Msgpack RPC</h3>
+
+							  <p><a href="https://github.com/neovim/neovim/issues/1118">Discussion arose</a> regarding how Neovim wasn’t fully
+							  compliant with the <a href="https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md">specification of msgpack-rpc</a>.</p>
+
+							  <p>In the last few weeks, <a href="https://github.com/tarruda">@tarruda</a> has <a href="https://github.com/neovim/neovim/pull/1121">completed the
+							  implementation</a> to fully support the specification.</p>
+
+							  <p>He also has been working on <a href="https://github.com/neovim/neovim/pull/1130">upgrading</a> the use of msgpack to the
+							  latest version, 2.0, which should be merged soon.</p>
+
+							  <h3>Python Client</h3>
+
+							  <p>In the first newsletter, a <a href="https://github.com/neovim/python-client">Python client</a> was first discussed.
+							  Since then, <a href="https://github.com/tarruda">@tarruda</a> has <a href="https://github.com/neovim/python-client/pull/17">refactored it</a> for various
+							  improvements.</p>
+
+							  <h3>Go Client</h3>
+
+							  <p><a href="https://github.com/myitcv">@myitcv</a> has made a <a href="https://github.com/neovim/neovim/issues/1136">proposal for adding Go integration</a> in a
+							  similar way that the Python integration works. The proposal also touches on
+							  being language agnostic.</p>
+
+							  <p>Although too copious to detail here, the link above also includes more details
+							  on implementation and discussion regarding that.</p>
+
+							  <h3>More Code Removal</h3>
+
+							  <p>More code that was either dead or for unsupported legacy systems was removed in
+							  two different pull requests (<a href="https://github.com/neovim/neovim/pull/814">1</a>, <a href="https://github.com/neovim/neovim/pull/1006">2</a>).</p>
+
+							  <p>The systems that still had code lingering included <a href="http://en.wikipedia.org/wiki/SGI_IRIS">SGI IRIS</a>,
+							  <a href="http://en.wikipedia.org/wiki/BeOS">BeOS</a>, and <a href="http://en.wikipedia.org/wiki/EBCDIC">EBCDIC</a>.</p>
+
+							  <h3>Cross Platform Temporary Filenames</h3>
+
+							  <p>The function to create temporary files in Neovim needed features that weren’t in
+							  <a href="https://github.com/joyent/libuv">libuv</a>.</p>
+
+							  <p><a href="https://github.com/Hinidu">@Hinidu</a>, one of Neovim’s contributors, <a href="https://github.com/joyent/libuv/pull/1368">sent a pull request</a> to
+							  libuv to add a new function, <code>uv_fs_mkdtemp</code>. The changes (now part of libuv
+							  <a href="https://github.com/joyent/libuv/commit/ffe24f955032d060968ea0289af365006afed55e">version 0.11.27</a>) are being <a href="https://github.com/neovim/neovim/pull/1034">used by Neovim</a> to provide
+							  temporary file/directory creation and the changes work across platforms.</p>
+
+							  <p>Because the cross-plaform code has been contributed to libuv, all libuv-based
+							  projects can benefit from the changes.</p>
+
+							  <h3>First Bounty Claimed!</h3>
+
+							  <p>Back on April 9th, the <a href="https://github.com/neovim/neovim/issues/501">first bounty</a> on <a href="https://www.bountysource.com/teams/neovim">Neovim’s
+							  Bountysource</a> was created. The request was to port an existing
+							  patch that was written by Christian Brabandt from Vim to Neovim. The patch gives
+							  a <code>breakindent</code> option that will match the indentation when a line is wrapped.</p>
+
+							  <p><a href="https://github.com/fmoralesc">@fmoralesc</a> created a <a href="https://github.com/neovim/neovim/pull/691">pull request</a> to claim the bounty. A bit of
+							  discussion took place and some revisions were made. Since then they have been
+							  merged into the master branch and <a href="https://github.com/fmoralesc">@fmoralesc</a> has been awarded the bounty!</p>
+
+							  <h3>More Unit Tests</h3>
+
+							  <p><a href="https://github.com/war1025">@war1025</a> has <a href="https://github.com/neovim/neovim/pull/904">added unit tests</a> for two existing files:
+							  <a href="https://github.com/neovim/neovim/blob/master/src/nvim/buffer.c">buffer.c</a> and <a href="https://github.com/neovim/neovim/blob/master/src/nvim/fileio.c">fileio.c</a>. Adding more unit test
+							  coverage to the code as it is refactored is part of the goal of Neovim.</p>
+
+							  <h3>Core Service Providers</h3>
+
+							  <p><a href="https://github.com/tarruda">@tarruda</a> made a <a href="https://github.com/neovim/neovim/pull/895">pull request</a> that is exposing some of Neovim’s core
+							  functionality through the msgpack API.</p>
+
+							  <p>While still volatile as it evolves, this core functionality includes:</p>
+
+							  <ul>
+							    <li><a href="https://github.com/tarruda/neovim/commit/8a091e7f5c58a27fb3af1de76284430e812c95b5">Support functions for external interpreters</a></li>
+								  <li><a href="https://github.com/tarruda/neovim/commit/fba1d3b50f34a4e755bee8fa5dcc192efef202d8">Accessing/changing the clipboard registers</a></li>
+								    <li><a href="https://github.com/tarruda/neovim/commit/486c8e37c17e4aa89fa9ef7e0c682b659a5a8a82">More Python support</a></li>
+									</ul>
+
+									<h3>Embeddability Progress</h3>
+
+									<p><a href="https://github.com/tarruda">@tarruda</a> has <a href="https://github.com/neovim/neovim/pull/1060">added a <code>--embedded-mode</code></a> flag which will allow another
+									program to start Neovim in the background and use it as a headless instance.</p>
+
+									<p>Technically, it uses <a href="https://github.com/msgpack-rpc/msgpack-rpc">msgpack-rpc</a> to talk with the client using
+									stdin and stdout.</p>
+
+									<h3>Windows Progress</h3>
+
+									<p>Neovim has successfully been compiled in <a href="http://msdn.microsoft.com/en-us/vstudio/hh386302.aspx">Microsoft Visual C++</a> as
+									well as using <a href="http://www.mingw.org/">MinGW</a>, in <a href="https://github.com/neovim/neovim/issues/696">this issue</a> and <a href="https://github.com/neovim/neovim/pull/810">this
+									one</a> respectively.</p>
+
+									<h2>Helping Out</h2>
+
+									<h3>Donating</h3>
+
+									<p>If you’d like to help support development, you may donate using Bitcoins here:
+									<code>1Evu6wPrzjsjrNPdCYbHy3HT6ry2EzXFyQ</code> or back the team on the <a href="https://www.bountysource.com/teams/neovim">Neovim
+									Bountysource</a> page.</p>
+
+									<h3>Contributing</h3>
+
+									<p>If you an experienced developer or inexperienced but wanting to learn, visit the
+									<a href="https://github.com/neovim/neovim/">GitHub repo</a> and check out the <a href="https://github.com/neovim/neovim/blob/master/README.md">README</a>,
+									<a href="https://github.com/neovim/neovim/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> guide, and finally the <a href="https://github.com/neovim/neovim/wiki">Wiki</a> to learn
+									more.</p>
+
+									<p>There are plenty of opportunities to help out and plenty of things to do.</p>
+
+									<h2>That’s a Wrap</h2>
+
+									<p>Do you have any feedback or suggestions regarding this third newsletter? Feel
+									free to reach out through the <a href="https://twitter.com/Neovim">Neovim Twitter</a>.</p>
+
+									<p>Also be sure to subscribe to the <a href="/news.xml">RSS feed</a> to stay up-to-date on what is
+									happening in the Neovim world. The next newsletter will be released in two
+									months near the beginning of November.</p>
+
+									<p>Until next time. <code>:wq</code></p>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+					<article class="unread">
+						<div class="date">2014-07-28</div>
+						<h2><a href="https://www.archlinux.org/news/xorg-server-116-is-now-available/">xorg-server 1.16 is now available</a></h2>
+						<div class="author">by <b>Laurent Carlier</b> (Arch Linux)</div>
+						<div class="content">
+							<p>The new version comes with the following changes:</p>
+							<ul>
+								<li><p>X is now rootless with the help of systemd-logind, this also means that it must be launched from the same virtual terminal as was used to log in, redirecting stderr also breaks rootless login. The old root execution behavior can be restored through the Xorg.wrap config file (man xorg.wrap). Please note that launching X through a login-manager (gdm, kdm, ...) doesn't yet provide rootless access.</p></li>
+								<li><p>The default configuration files are now in /usr/share/X11/xorg.conf.d, all host configurations are still taking place in /etc/X11/xorg.conf.d/ directory. Please note that files 10-evdev.conf and 10-quirks.conf in /etc/X11/xorg.conf.d could be renamed with .pacsave suffix, which could break your configuration, then just rename them and remove the .pacsave suffix.</p></li>
+								<li><p>Better glamor accelerated rendering, deprecating <code>glamor-egl</code> package.</p></li>
+								<li><p>A new package <code>xorg-server-xwayland</code> that allows running X applications inside a wayland session.</p></li>
+								<li><p>The <code>xf86-video-intel</code> package doesn't provide dri3 support anymore because of multiple rendering bugs.</p></li>
+							</ul>
+						</div>
+						<div class="action-bar">
+							<span>Like</span>
+							<span>Mark as read</span>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

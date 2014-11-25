@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>kream</title>
+		<meta charset="UTF-8" />
+		<link href="/resources/kream.png" rel="icon" type="image/png" />
+		<link href="/style.css" rel="stylesheet" type="text/css" />
+		<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="/jquery.sortable.min.js" type="text/javascript"></script>
+		<script src="/script.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<header>
+			<h1><a href="/">kream.io</a><span class="version"> rss</span></h1>
+			<nav>
+				<ul>
+					<li><a href="/home.html" class="active">Home</a></li>
+					<li><a href="/settings.html">Settings</a></li>
+					<li><a href="/help.html">Help</a></li>
+					<li><a href="/">Sign out</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="main">
+			<div id="sidebar">
+				<span id="new-subscription" class="button-primary block">New subscription</span>
+				<div id="add-subscription">
+					<form action="javascript:;" method="post">
+						<fieldset>
+							<button type="submit" tabindex="2">Add</button>
+							<input type="url" placeholder="subscription URL" tabindex="1"/>
+						</fieldset>
+					</form>
+				</div>
+				<div id="sidebar-content">
+					<div id="menu">
+						<ul>
+							<li><a id="home" href="/home.html">Home</a></li>
+							<li><a id="unread" href="/unread.html">Unread <span class="badge">7</span></a></li>
+							<li><a id="liked" href="/liked.html" class="active">Liked</a></li>
+							<li><a id="all" href="/all.html">All articles</a></li>
+						</ul>
+					</div>
+					<div id="subscriptions">
+						<ul class="connected sortable">
+							<li><a id="neovim" href="/subscriptions/neovim.html">Neovim <span class="badge">1</span></a></li>
+							<li><a id="weechat" href="/subscriptions/weechat.html">WeeChat</a></li>
+							<li><a id="xkcd" href="/subscriptions/xkcd.html">XKCD</a></li>
+						</ul>
+						<ul>
+							<li class="folder">
+								<input type="checkbox" id="games" />
+								<label for="games">Games</label>
+								<ul class="connected sortable">
+									<li><a id="grimrock" href="/subscriptions/grimrock.html">Legend of Grimrock</a></li>
+									<li class="empty-li"></li>
+								</ul>
+							</li>
+							<li class="folder">
+								<input type="checkbox" id="linux" />
+								<label for="linux">Linux</label>
+								<ul class="connected sortable">
+									<li><a id="arch" href="/subscriptions/arch.html">Arch Linux <span class="badge">2</span></a></li>
+									<li><a id="lwn" href="/subscriptions/lwn.html">LWN.net <span class="badge">4</span></a></li>
+									<li class="empty-li"></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="content">
+				<div class="header">
+					<span class="button-primary">Refresh</span>
+					<span class="button-secondary">Settings</span>
+					<h2>Liked</h2>
+				</div>
+				<div id="reader">
+					<article class="liked">
+						<div class="date">2014-10-27</div>
+						<h2><a href="http://xkcd.com/1439/">Rack Unit</a></h2>
+						<div class="author">by <b>Randall Munroe</b> (XKCD)</div>
+						<div class="content">
+							<img src="http://imgs.xkcd.com/comics/rack_unit.png" title="There's also nothing in the TOSes that says you can't let a dog play baseball in the server room!" alt="There's also nothing in the TOSes that says you can't let a dog play baseball in the server room!">
+						</div>
+						<div class="action-bar">
+							<span>Unlike</span>
+							<span>Mark as unread</span>
+						</div>
+					</article>
+					<article class="liked">
+						<div class="date">2014-10-22</div>
+						<h2><a href="http://www.grimrock.net/2014/10/22/grimrock-2-update-2-1-13/">Grimrock 2 Update 2.1.13</a></h2>
+						<div class="author">by <b>Petri Häkkinen</b> (Legend of Grimrock)</div>
+						<div>
+							<p>We have just released a patch that updates Legend of Grimrock 2 to version 2.1.13. The patch fixes multiple issues, including some crash bugs, so it&#8217;s recommended that everybody updates to the latest version.</p>
+							<p><strong>Steam version:</strong> the game should automatically update soon. If the game does not update in a few hours, restarting the Steam client should help.</p>
+							<p><strong>Standalone version:</strong> if you are playing the standalone version, please <a href="http://grimrock.net/patch/grimrock2_2_1_9_to_2_1_13_patch.exe" onclick="javascript:_gaq.push(['_trackEvent','download','http://grimrock.net/patch/grimrock2_2_1_9_to_2_1_13_patch.exe']);">download the patch</a> that updates the game installed on your computer. </p>
+							<p><strong>GOG version:</strong> The patch also works with GOG installations but there is a slight kink. When a dialog appears saying that an existing installation can not be found and the patcher asks &#8220;Abort Installation?&#8221;, select No. You have to then navigate to the installation location of your GOG version of Legend of Grimrock 2.<br />
+							<span id="more-5078"></span><br />
+							We have sent the patched version to GOG and Humble Store and it will take some for them to process and make the new version available through their channels.</p>
+							<p>The patch is fully compatible with old save games. Here are the full release notes:</p>
+							<p>&#8211; fixed typo in a potion description<br />
+							&#8211; improved precision of dual wielding damage calculations<br />
+							&#8211; zarchtons no longer drop harpoons (this was not intended behavior)<br />
+							&#8211; added missing embalmer&#8217;s pants to the game<br />
+							&#8211; fixed jeweled scepter&#8217;s 3D model to fit inside chests<br />
+							&#8211; fixed errors and clarified attribute tooltips<br />
+							&#8211; clarified battle mage description (a magical staff is needed to get the +10 bonus to resistance or protection)<br />
+							&#8211; changed resistance bonuses: strength now affects resist fire, dexterity affects resist shock, vitality affects resist poison and willpower affects resist cold<br />
+							&#8211; added hit sound to pushable blocks (does not apply to old save games)<br />
+							&#8211; optimized opening of automap<br />
+							&#8211; fixed &#8220;odd behavior of certain rock piles&#8221; when throwing items at them<br />
+							&#8211; renamed trait: Weapon Specialization -> Martial Training<br />
+							&#8211; tweaked stun effect to be less subtle<br />
+							&#8211; tweaked chest map icon so that an exclamation mark icon on top of a chest is more visible<br />
+							&#8211; improved precision of boss fight progress bar<br />
+							&#8211; nerfed poison cloud&#8217;s poison effect<br />
+							&#8211; bug fix: items can&#8217;t be thrown from mouse cursor when standing in front of a open secret door<br />
+							&#8211; bug fix: a spell that was cut from the game during development can be cast by fiddling with the rune panel<br />
+							&#8211; bug fix: loading certain save games can sometimes crash with &#8220;could not resolve monster group member with id XXXXX&#8221; error<br />
+							&#8211; bug fix: buckler&#8217;s evasion bonus does not work (does not apply to old save games)<br />
+							&#8211; bug fix: knight&#8217;s shield bonus does not work<br />
+							&#8211; bug fix: max epic items statistics is wrong (should be 17, not 16)<br />
+							&#8211; bug fix: viper roots can spawn under water and die immediately<br />
+							&#8211; bug fix: healing potion effect is played on the wrong portrait if party formation is changed<br />
+							&#8211; bug fix: fireburst and similar spells can be cast inside pushable blocks (does not apply to old save games)<br />
+							&#8211; bug fix: automap is not updated when falling down a level<br />
+							&#8211; bug fix: game crashes when alt-tabbing during loading screen<br />
+							&#8211; bug fix: item auto pickup logic does not take elevations into account (causes problems at the Skyway puzzle)<br />
+							&#8211; bug fix: some map graphics are not shown on the automap after loading a save game<br />
+							&#8211; bug fix: loading certain save games can sometimes crash with &#8220;inflate failed &#8211; ran out of available bytes&#8221; error<br />
+							&#8211; bug fix: moving monster leave behind invisible blockers (very rarely) when the party is asleep<br />
+							&#8211; bug fix: sleep darts put monsters to sleep even if the attack misses<br />
+							&#8211; bug fix: armor set is considered to be equipped when shield is in inactive quick slot<br />
+							&#8211; bug fix: monsters can fall down from ledges when they are leap attacking and party is standing on ladders<br />
+							&#8211; bug fix: thrown items collide with marble statues behind the party when throwing items at the Shipwreck Beach<br />
+							&#8211; bug fix: venom edge icon has a black smudge<br />
+							&#8211; bug fix: rope can be used to climb down to a pit which has a teleporter over it<br />
+							&#8211; bug fix: spell casting panel and potion crafting panels stay open when champion&#8217;s hand is injured<br />
+							&#8211; bug fix: if the healing crystal is on a platform, the healing crystal is not shown on the map<br />
+							&#8211; bug fix: player can climb ladders while overloaded</p>
+						</div>
+						<div class="action-bar">
+							<span>Unlike</span>
+							<span>Mark as unread</span>
+						</div>
+					</article>
+					<article class="liked">
+						<div class="date">2014-08-21</div>
+						<h2><a href="https://www.archlinux.org/news/reorganization-of-vim-packages/">Reorganization of Vim packages</a></h2>
+						<div class="author">by <b>Thomas Dziedzic</b> (Arch Linux)</div>
+						<div class="content">
+							<p>The Vim suite of packages has been reorganized to better provide advanced features in the standard vim package, and to split the CLI and GUI versions; the new packages are:</p>
+							<ul>
+								<li>vim-minimal: identical to the previous vim package</li>
+								<li>vim: now includes all the features from gvim which includes the python, lua, and ruby interpreters, without GTK/X support</li>
+								<li>vim-python3: same as the above for gvim-python3</li>
+								<li>gvim: same as before</li>
+								<li>gvim-python3: same as before</li>
+								<li>vim-runtime: same as before</li>
+							</ul>
+						</div>
+						<div class="action-bar">
+							<span>Unlike</span>
+							<span>Mark as unread</span>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
