@@ -4,7 +4,6 @@
 
 	$status = array("", "");
 
-	//if($_SESSION["location"] == "home") {}
 	if($_SESSION["location"] == "unread")
 	{
 		$statement = $conn->prepare("SELECT a.id, a.title, a.url, a.author, a.date, a.content FROM Unread l JOIN Articles a ON l.article_id = a.id WHERE user_id = :user_id");

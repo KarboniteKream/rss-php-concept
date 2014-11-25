@@ -430,7 +430,8 @@ p
 	width: 30%;
 }
 
-#reader
+#reader,
+#featured:not(.home-right)
 {
 	position: absolute;
 	top: 38px;

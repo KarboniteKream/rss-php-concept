@@ -13,7 +13,8 @@ $(document).ready(function()
 	setSortable();
 
 	loadSidebar();
-	loadFeed();
+	//loadFeed();
+	loadFeatured();
 
 	$("input").on("input", function()
 	{
@@ -297,6 +298,63 @@ function loadSidebar()
 					}
 				});
 			});
+		}
+	});
+}
+
+function changeEmail()
+{
+	$.ajax
+	({
+		url: "/change_email.php",
+		type: "POST",
+		data: { "email": $("#change-email input[name='email']").val() }
+	});
+}
+
+function loadFeatured()
+{
+	$.ajax
+	({
+		url: "/load-featured.php",
+		type: "GET",
+		success: function(data)
+		{
+			$("#featured").empty();
+
+			$.parseJSON(data).forEach(function(article)
+			{
+				$("#featured").append
+				(
+					$("<article>").attr("id", article.id).append
+					(
+						$("<div>").addClass("date").text(article.date),
+						$("<h2>").append
+						(
+							$("<a>").attr("href", article.url).text(article.title)
+						),
+						$("<div>").addClass("content").html("<p>" + article.content + "</p>"),
+						$("<div>").addClass("action-bar").append
+						(
+							$("<span>").text("Like").click(function()
+							{
+								like($(this));
+							})
+						)
+					)
+				);
+
+				$("#reader article:last-child h2").after(function()
+				{
+					if(article.author != null)
+					{
+						return $("<div>").addClass("author").html("by <b>" + article.author + "</b>");
+					}
+				});
+			});
+
+			$(".action-bar").append('<span class="remove-article">Remove</span>');
+			$("article a").attr("target", "_blank");
 		}
 	});
 }

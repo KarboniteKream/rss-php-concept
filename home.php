@@ -7,6 +7,8 @@
 			header("Location: http://$root");
 			exit();
 		}
+
+		$_SESSION["location"] = "settings";
 	}
 ?>
 
@@ -28,7 +30,7 @@
 			<nav>
 				<ul>
 					<li><a href="/home.html" class="active">Home</a></li>
-					<li><a href="/settings.html">Settings</a></li>
+					<li><a href="/settings.php">Settings</a></li>
 					<li><a href="/help.html">Help</a></li>
 					<li><a href="sign_out.php">Sign out</a></li>
 				</ul>
@@ -56,6 +58,14 @@
 					<h2 id="feed-name"></h2>
 				</div>
 				<div id="reader">
+					<div class="home-left">
+						<h2 class="notice">You have 7 unread articles.</h2>
+						<div id="widgets">
+							<img src="http://imgs.xkcd.com/comics/time.png" title="The end." alt="The current time is unknown." />
+						</div>
+					</div>
+					<div id="featured" class="home-right">
+					</div>
 				</div>
 			</div>
 		</div>

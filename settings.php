@@ -1,3 +1,17 @@
+<?php
+	if(session_start() == true)
+	{
+		if(isset($_SESSION["user_id"]) == false)
+		{
+			$root = $_SERVER["HTTP_HOST"];
+			header("Location: http://$root");
+			exit();
+		}
+
+		$_SESSION["location"] = "settings";
+	}
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -7,7 +21,7 @@
 		<link href="/resources/kream.png" rel="icon" type="image/png" />
 		<link href="/style.css" rel="stylesheet" type="text/css" />
 		<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-		<script src="/jquery.sortable.min.js" type="text/javascript"></script>
+		<script src="/html.sortable.min.js" type="text/javascript"></script>
 		<script src="/script.js" type="text/javascript"></script>
 	</head>
 	<body>
@@ -15,10 +29,10 @@
 			<h1><a href="/">kream.io</a><span class="version"> rss</span></h1>
 			<nav>
 				<ul>
-					<li><a href="/home.html">Home</a></li>
-					<li><a href="/settings.html" class="active">Settings</a></li>
+					<li><a href="/home.php">Home</a></li>
+					<li><a href="/settings.php" class="active">Settings</a></li>
 					<li><a href="/help.html">Help</a></li>
-					<li><a href="/">Sign out</a></li>
+					<li><a href="/sign_out.php">Sign out</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -34,40 +48,6 @@
 					</form>
 				</div>
 				<div id="sidebar-content">
-					<div id="menu">
-						<ul>
-							<li><a id="home" href="/home.html">Home</a></li>
-							<li><a id="unread" href="/unread.html">Unread <span class="badge">7</span></a></li>
-							<li><a id="liked" href="/liked.html">Liked</a></li>
-							<li><a id="all" href="/all.html">All articles</a></li>
-						</ul>
-					</div>
-					<div id="subscriptions">
-						<ul class="connected sortable">
-							<li><a id="neovim" href="/subscriptions/neovim.html">Neovim <span class="badge">1</span></a></li>
-							<li><a id="weechat" href="/subscriptions/weechat.html">WeeChat</a></li>
-							<li><a id="xkcd" href="/subscriptions/xkcd.html">XKCD</a></li>
-						</ul>
-						<ul>
-							<li class="folder">
-								<input type="checkbox" id="games" />
-								<label for="games">Games</label>
-								<ul class="connected sortable">
-									<li><a id="grimrock" href="/subscriptions/grimrock.html">Legend of Grimrock</a></li>
-									<li class="empty-li"></li>
-								</ul>
-							</li>
-							<li class="folder">
-								<input type="checkbox" id="linux" />
-								<label for="linux">Linux</label>
-								<ul class="connected sortable">
-									<li><a id="arch" href="/subscriptions/arch.html">Arch Linux <span class="badge">2</span></a></li>
-									<li><a id="lwn" href="/subscriptions/lwn.html">LWN.net <span class="badge">4</span></a></li>
-									<li class="empty-li"></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div id="content">
@@ -124,10 +104,10 @@
 						</div>
 					</div>
 					<div id="account-content" class="home-right">
-						<form id="change-email" action="." method="post">
+						<form id="change-email" action="javascript:changeEmail()" method="post">
 							<fieldset>
 								<legend>Change e-mail</legend>
-								<input type="email" placeholder="new e-mail" />
+								<input name="email" type="email" placeholder="new e-mail" />
 								<br />
 								<input class="confirm-email" type="email" placeholder="confirm e-mail" />
 								<br />
@@ -156,9 +136,9 @@
 				<span class="button-secondary" onclick="hideOverlay()">&times;</span>
 				<h3>Delete my account</h3>
 			</div>
-			<form id="delete-account-form" action="/" method="post">
+			<form id="delete-account-form" action="delete_account.php" method="post">
 				<fieldset>
-					<input type="password" placeholder="password" />
+					<input type="password" name="password" placeholder="password" />
 					<br />
 					<input class="confirm-password" type="password" placeholder="confirm password" />
 					<br />
