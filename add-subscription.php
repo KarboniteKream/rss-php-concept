@@ -25,8 +25,7 @@
 	$statement_u = $conn->prepare("INSERT INTO Unread (user_id, article_id) VALUES (:user_id, :article_id)");
 	$statement_u->bindParam(":user_id", $_SESSION["user_id"]);
 
-	//foreach($articles as $article)
-	$article = $articles[0];
+	foreach($articles as $article)
 	{
 		$dc = $article->children("http://purl.org/dc/elements/1.1/");
 
