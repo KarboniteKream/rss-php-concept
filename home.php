@@ -29,7 +29,7 @@
 			<h1><a href="/">kream.io</a><span class="version"> rss</span></h1>
 			<nav>
 				<ul>
-					<li><a href="/home.html" class="active">Home</a></li>
+					<li><a href="/home.php" class="active">Home</a></li>
 					<li><a href="/settings.php">Settings</a></li>
 					<li><a href="/help.html">Help</a></li>
 					<li><a href="sign_out.php">Sign out</a></li>
