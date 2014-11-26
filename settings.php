@@ -136,7 +136,7 @@
 				<span class="button-secondary" onclick="hideOverlay()">&times;</span>
 				<h3>Delete my account</h3>
 			</div>
-			<form id="delete-account-form" action="delete_account.php" method="post">
+			<form id="delete-account-form" action="util.php?function=delete-account" method="post">
 				<fieldset>
 					<input type="password" name="password" placeholder="password" />
 					<br />

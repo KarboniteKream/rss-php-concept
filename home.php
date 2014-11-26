@@ -32,7 +32,7 @@
 					<li><a href="/home.php" class="active">Home</a></li>
 					<li><a href="/settings.php">Settings</a></li>
 					<li><a href="/help.html">Help</a></li>
-					<li><a href="sign_out.php">Sign out</a></li>
+					<li><a href="util.php?function=sign-out">Sign out</a></li>
 				</ul>
 			</nav>
 		</header>

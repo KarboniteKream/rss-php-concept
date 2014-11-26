@@ -1,5 +1,3 @@
-var feedName = "";
-
 $(document).ready(function()
 {
 	$("#overlay").click(hideOverlay);
@@ -32,7 +30,7 @@ $(document).ready(function()
 
 			$.ajax
 			({
-				url: "/check.php",
+				url: "/util.php?function=check-email",
 				type: "POST",
 				data: { "email": $(this).val() },
 				success: function(data)
@@ -89,7 +87,7 @@ $(document).ready(function()
 
 		$.ajax
 		({
-			url: "/add-subscription.php",
+			url: "/util.php?function=add-subscription",
 			type: "POST",
 			data: { "url": $("#add-subscription input").val() },
 			success: function(data)
@@ -109,7 +107,7 @@ $(document).ready(function()
 
 	$(".action-bar span:contains('read')").click(function()
 	{
-		mark_read($(this));
+		markAsRead($(this));
 	});
 
 	$(".open-popup").click(function()
@@ -175,7 +173,7 @@ function like(element)
 	// TODO: Check status in database.
 	$.ajax
 	({
-		url: "/like.php",
+		url: "/util.php?function=like",
 		type: "POST",
 		data: { "article_id": element.parent().parent().attr("id"), "liked": element.parent().parent().hasClass("liked") ? "true" : "false" },
 		success: function(data)
@@ -189,11 +187,11 @@ function like(element)
 	});
 }
 
-function mark_read(element)
+function markAsRead(element)
 {
 	$.ajax
 	({
-		url: "/mark_read.php",
+		url: "/util.php?function=mark-as-read",
 		type: "POST",
 		data: { "article_id": element.parent().parent().attr("id"), "unread": element.parent().parent().hasClass("unread") ? "true" : "false" },
 		success: function(data)
@@ -209,7 +207,7 @@ function unsubscribe()
 {
 	$.ajax
 	({
-		url: "/unsubscribe.php",
+		url: "/util.php?function=unsubscribe",
 		type: "POST",
 		success: function()
 		{
@@ -223,7 +221,7 @@ function loadSidebar()
 {
 	$.ajax
 	({
-		url: "load_menu.php",
+		url: "util.php?function=count-unread",
 		type: "GET",
 		success: function(data)
 		{
@@ -255,48 +253,48 @@ function loadSidebar()
 				),
 				$("<div>").attr("id", "subscriptions")
 			);
-		}
-	});
 
-	$.ajax
-	({
-		url: "load_sidebar.php",
-		type: "GET",
-		success: function(data)
-		{
-			$("#subscriptions").html(data);
-			setSortable();
+			$.ajax
+			({
+				url: "util.php?function=load-sidebar",
+				type: "GET",
+				success: function(data)
+				{
+					$("#subscriptions").html(data);
+					setSortable();
 
-			$(".sortable").sortable().bind("sortupdate", function(e, ui)
-			{
-				var ui = ui;
-				$.ajax
-				({
-					url: "/set_folder.php",
-					type: "POST",
-					data: { "feed_id": ui.item.children().first().attr("feed"), "folder": ui.endparent.prev().text() },
-					success: function()
+					$(".sortable").sortable().bind("sortupdate", function(e, ui)
 					{
-						loadSidebar();
-					}
-				});
-			});
+						var ui = ui;
+						$.ajax
+						({
+							url: "/util.php?function=set-folder",
+							type: "POST",
+							data: { "feed_id": ui.item.children().first().attr("feed"), "folder": ui.endparent.prev().text() },
+							success: function()
+							{
+								loadSidebar();
+							}
+						});
+					});
 
-			$("#subscriptions li a, #menu li a").click(function()
-			{
-				var link = $(this);
-
-				$.ajax
-				({
-					url: "/open-feed.php",
-					type: "GET",
-					data: { "feed":  link.attr("feed") },
-					success: function(data)
+					$("#subscriptions li a, #menu li a").click(function()
 					{
-						loadSidebar();
-						loadFeed();
-					}
-				});
+						var link = $(this);
+
+						$.ajax
+						({
+							url: "/util.php?function=open-feed",
+							type: "GET",
+							data: { "feed":  link.attr("feed") },
+							success: function(data)
+							{
+								loadSidebar();
+								loadFeed();
+							}
+						});
+					});
+				}
 			});
 		}
 	});
@@ -306,7 +304,7 @@ function changeEmail()
 {
 	$.ajax
 	({
-		url: "/change_email.php",
+		url: "/util.php?function=change-email",
 		type: "POST",
 		data: { "email": $("#change-email input[name='email']").val() }
 	});
@@ -316,7 +314,7 @@ function loadFeatured()
 {
 	$.ajax
 	({
-		url: "/load-featured.php",
+		url: "/util.php?function=load-featured",
 		type: "GET",
 		success: function(data)
 		{
@@ -361,88 +359,88 @@ function loadFeatured()
 
 function loadFeed()
 {
-	// TODO: util.php
 	$.ajax
 	({
-		url: "feed_name.php",
+		url: "util.php?function=feed-name",
 		type: "GET",
 		success: function(data)
 		{
-			feedName = data;
-		}
-	});
+			var feedName = data;
 
-	$.ajax
-	({
-		url: "/load-feed.php",
-		type: "GET",
-		success: function(data)
-		{
-			$(".open-popup").click(function()
-			{
-				$("#overlay").fadeIn("fast");
-				$($(this).attr("target-popup")).fadeIn("fast");
-				$("#form-question").text($("#form-question").text().replace("FEED", $("#feed-name").text()));
-			});
-
-			$("#reader").empty();
-			$("#feed-name").text(feedName);
-
-			if(data != "[]")
-			{
-				$.parseJSON(data).forEach(function(article)
+			$.ajax
+			({
+				url: "/util.php?function=load-feed",
+				type: "GET",
+				success: function(data)
 				{
-					$("#reader").append
-					(
-						$("<article>").attr("id", article.id).addClass(article.status[0]).addClass(article.status[1]).append
-						(
-							$("<div>").addClass("date").text(article.date),
-							$("<h2>").append
-							(
-								$("<a>").attr("href", article.url).text(article.title)
-							),
-							$("<div>").addClass("content").html("<p>" + article.content + "</p>"),
-							$("<div>").addClass("action-bar").append
-							(
-								$("<span>").text(article.status[0] == "liked" ? "Unlike" : "Like").click(function()
-								{
-									like($(this));
-								}),
-								$("<span>").text(article.status[1] == "unread" ? "Mark as read" : "Mark as unread").click(function()
-								{
-									mark_read($(this));
-								})
-							)
-						)
-					);
-
-					$("#reader article:last-child h2").after(function()
+					$(".open-popup").click(function()
 					{
-						if(article.author != null)
-						{
-							return $("<div>").addClass("author").html("by <b>" + article.author + "</b>");
-						}
+						$("#overlay").fadeIn("fast");
+						$($(this).attr("target-popup")).fadeIn("fast");
+						$("#form-question").text($("#form-question").text().replace("FEED", $("#feed-name").text()));
 					});
-				});
 
-				$("article a").attr("target", "_blank");
-			}
-			else
-			{
-				$("#reader").append
-				(
-					$("<span>").css({ "display": "block", "padding-top": "15px", "text-align": "center", "font-size": "18px" }).text("There are no unread articles.")
-				);
-			}
+					$("#reader").empty();
+					$("#feed-name").text(feedName);
+
+					if(data != "[]")
+					{
+						$.parseJSON(data).forEach(function(article)
+						{
+							$("#reader").append
+							(
+								$("<article>").attr("id", article.id).addClass(article.status[0]).addClass(article.status[1]).append
+								(
+									$("<div>").addClass("date").text(article.date),
+									$("<h2>").append
+									(
+										$("<a>").attr("href", article.url).text(article.title)
+									),
+									$("<div>").addClass("content").html("<p>" + article.content + "</p>"),
+									$("<div>").addClass("action-bar").append
+									(
+										$("<span>").text(article.status[0] == "liked" ? "Unlike" : "Like").click(function()
+										{
+											like($(this));
+										}),
+										$("<span>").text(article.status[1] == "unread" ? "Mark as read" : "Mark as unread").click(function()
+										{
+											markAsRead($(this));
+										})
+									)
+								)
+							);
+
+							$("#reader article:last-child h2").after(function()
+							{
+								if(article.author != null)
+								{
+									return $("<div>").addClass("author").html("by <b>" + article.author + "</b>");
+								}
+							});
+						});
+
+						$("article a").attr("target", "_blank");
+					}
+					else
+					{
+						$("#reader").append
+						(
+							$("<span>").css({ "display": "block", "padding-top": "15px", "text-align": "center", "font-size": "18px" }).text("There are no unread articles.")
+						);
+					}
+				}
+			});
 		}
 	});
+
 }
 
 function sign_in()
 {
 	$.ajax
 	({
-		url: "/login.php",
+		url: "/util.php?function=sign-in",
 		type: "POST",
 		data: { "email": $("#sign-in input[name='email']").val(), "password": $("#sign-in input[name='password']").val(), "remember_me": $("#remember-me").is(":checked") == true ? "true" : "false" },
 		success: function(data)
@@ -463,7 +461,7 @@ function register()
 {
 	$.ajax
 	({
-		url: "/register.php",
+		url: "/util.php?function=register",
 		type: "POST",
 		data: { "real_name": $("#register input[name='real-name']").val(), "email": $("#register input[name='email']").val(), "password": $("#register input[name='password']").val() },
 		success: function(data)
