@@ -1,3 +1,6 @@
 <?php
-	$conn = new PDO("mysql:host=localhost;dbname=rss;charset=utf8", "root", "gasilec");
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$host = $url["host"];
+	$db = substr($url["path"], 1);
+	$conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $url["user"], $url["pass"]);
 ?>
