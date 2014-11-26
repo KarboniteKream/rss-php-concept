@@ -256,7 +256,7 @@ function loadSidebar()
 				$("<div>").attr("id", "subscriptions")
 			);
 		}
-	})
+	});
 
 	$.ajax
 	({
